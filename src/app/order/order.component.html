@@ -1,0 +1,222 @@
+<header>    
+    <div class="container text-center">
+      
+      
+      <div>
+          <nav
+                  class="navbar navbar-expand-sm"
+                  style="background-color: #020e17 text-center"
+          >
+              <a class="navbar-brand" >FUEL-D</a>
+              <br>
+  
+              <div class="collapse navbar-collapse" id="navbarText">
+                  <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                          <a routerLink="/main-page" class="nav-link" routerLinkActive="active">Home<span class="sr-only"></span></a>
+                      </li>
+  
+                      <li class="nav-item">
+    
+                        <a routerLink="/order" class="nav-link" routerLinkActive="active">Order</a>
+                      </li>
+  
+                      <li class="nav-item">
+  
+                        <a routerLink="/login" class="nav-link" routerLinkActive="active">Login</a>
+                      </li>
+                      <li class="nav-item">
+  
+                          <a routerLink="/register" class="nav-link" routerLinkActive="active">Register</a>
+                      </li>
+                   <!--  <li class="nav-item">
+                          <li class="nav-item" sec:authorize="hasAuthority('Admin')"></li>
+                          <a class="nav-link" th:href="@{/logout}">Sign Out</a>
+                          <div id="account" th:text="${email}" ></div> 
+                      </li> -->  
+                  </ul>
+              </div>
+          </nav>
+          
+      </div>
+  </div>
+    </header>
+  
+  
+  <!-- <div>
+  
+  <section class="vh-100">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+  
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+  
+                  <form class="mx-1 mx-md-4">
+  
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="email" id="form3Example3c" class="form-control" />
+                        <label class="form-label" for="form3Example3c">Your Email</label>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="password" id="form3Example4c" class="form-control" />
+                        <label class="form-label" for="form3Example4c">Password</label>
+                      </div>
+                    </div>
+  
+  
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="button" class="btn btn-primary btn-lg">Register</button>
+                    </div>
+  
+                  </form>
+  
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+  
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                    class="img-fluid" alt="Sample image">
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  </div> -->
+  
+  
+  <section class="vh-100">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+  
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Place Your Order</p>
+  
+                  <form #orderform="ngForm" class="mx-1 mx-md-4" (ngSubmit)="placeOrder()">
+                    <!-- <form #loginform="ngForm" class="mx-1 mx-md-4" [formGroup]="form" (ngSubmit)="onSubmit()"></form> -->
+  
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <!-- <input #nameInput type="text" name="name" id="form3Example3c" class="form-control"/> -->
+                        <input type="email" id="form3Example3c" class="form-control" name="name" [(ngModel)]="order.name"/>
+                        <label class="form-label" for="form3Example3c">Name</label>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="form3Example4c" class="form-control" name="fuelType" [(ngModel)]="order.fuelType"/>
+                        <label class="form-label" for="form3Example4c">Fuel Type</label>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="number" id="form3Example4c" class="form-control" name="capacity" [(ngModel)]="order.capacity"/>
+                        <label class="form-label" for="form3Example4c">Capacity</label>
+                      </div>
+                    </div>
+  
+  
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="submit" class="btn btn-info btn-lg">Order</button>
+                    </div>
+  
+                  </form>
+  
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+  
+                  <img [src]="ImagePath"
+                    class="img-fluid" alt="Sample image">
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <a routerLink="/Fual-D/src/app/main-page">
+  <button (click)="loadMainPage()">Order</button>
+  </a> -->
+  
+  <!-- <mdb-form-control>
+    <input mdbInput type="text" id="typeText" class="form-control" />
+    <label mdbLabel class="form-label" for="typeText">Text input</label>
+  </mdb-form-control> -->
+  
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify">
+            Risk Safe<i>Get your work permits with Ease </i>
+          </p>
+        </div>
+       
+        <div class="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a th:href="@{/page/index}">Home</a></li>
+            <li><a th:href="@{/page/contact}">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">
+            Copyright &copy; 2022 All Rights Reserved by
+            <a href="#">Gane</a>.
+          </p>
+        </div>
+  
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li>
+              <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+            </li>
+            <li>
+              <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </footer>
