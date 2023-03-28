@@ -7,8 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthService } from './auth/auth.service'
-import { AuthGuard } from './auth/auth.guard'
 
 @NgModule({
   declarations: [

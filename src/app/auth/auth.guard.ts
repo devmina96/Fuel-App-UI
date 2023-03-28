@@ -6,20 +6,28 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService:AuthService, private router: Router, state: RouterStateSnapshot){};
+
+  private currentUrl: string;
+
+  constructor(private authService:AuthService, private router: Router){};
   canActivate(
-    next: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      console.log('CanActivate called');
-    let isLoggedIn = this.authService.isAuthenticated();
+
+     const isLoggedIn = this.authService.userValue;
+
+
     if (isLoggedIn){
       return true
     } else {
-      this.authService.redirectUrl = state.url;
-      console.log(this.authService.redirectUrl);
-      this.router.navigate(['/login']);
+       this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}});
       return false;
     }
+
+    
+  }
+  getCurrentUrl(): string {
+    return this.currentUrl;
   }
   
 }

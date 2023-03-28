@@ -4,7 +4,6 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { OrderComponent } from './order/order.component';
-import { AuthService } from './auth/auth.service'
 import { AuthGuard } from './auth/auth.guard'
 
 const routes: Routes = [
